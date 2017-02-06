@@ -11,8 +11,9 @@ public class ch1 : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ch = GetComponent<Rigidbody2D>();
-        umbrellaOn = false;
-	}
+        umbrellaOn = true;
+        ch.drag = dragValue; 
+    }
 	
 	// Update is called once per frame
 	void Update () {
