@@ -5,7 +5,7 @@ using UnityEngine;
 public class ch1 : MonoBehaviour {
     public Rigidbody2D ch;
     bool canJump = false;
-    public float dragValue;
+    public float dragValue,massValue;
     bool umbrellaOn = false;
     public GameObject umbrella;
 	// Use this for initialization
@@ -22,13 +22,14 @@ public class ch1 : MonoBehaviour {
         ch.angularVelocity = 0;
         if (Input.GetKeyDown(KeyCode.W)&&canJump)
         {
-            ch.AddForce(new Vector2(0, 15), ForceMode2D.Impulse);
+            ch.AddForce(new Vector2(0, 18), ForceMode2D.Impulse);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
             if(!umbrellaOn)
             {  //ch.gravityScale = 0.5f;
                 ch.drag = dragValue;
+                //ch.mass = massValue;
                 umbrellaOn = true;
                 umbrella.SetActive(true);
 
@@ -36,6 +37,7 @@ public class ch1 : MonoBehaviour {
             else
             {
                 ch.drag = 0;
+               // ch.mass = 4;
                 umbrellaOn = false;
                umbrella.SetActive(false);
             }
