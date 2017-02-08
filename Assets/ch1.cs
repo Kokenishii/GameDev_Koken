@@ -23,7 +23,7 @@ public class ch1 : MonoBehaviour {
       // float moveVer = Input.GetAxis("Vertical");
         ch.velocity = new Vector3(moveHor*speed, ch.velocity.y);
         ch.angularVelocity = 0;
-        if (Input.GetKeyDown(KeyCode.W) && canJump)
+        if (Input.GetKeyDown(KeyCode.Space) && canJump)
         {
             ch.AddForce(new Vector2(0, 10 * jumpSpeed), ForceMode2D.Impulse);
         }
@@ -53,13 +53,13 @@ public class ch1 : MonoBehaviour {
     {
         Debug.Log("!");
       
-          //  canJump = true;
+           canJump = true;
         
     }
     void OnCollisionExit2D()
     {
         Debug.Log("?");
-       // canJump = false;
+       canJump = false;
     }
 
 }

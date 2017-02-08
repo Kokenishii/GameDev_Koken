@@ -14,16 +14,5 @@ public class collsiontest : MonoBehaviour {
 		
 	}
 
-    void OnCollisionEnter2D()
-    {
-        Debug.Log("!");
-
-        canJump = true;
-
-    }
-    void OnCollisionExit2D()
-    {
-        Debug.Log("?");
-        canJump = false;
-    }
+    
 }
