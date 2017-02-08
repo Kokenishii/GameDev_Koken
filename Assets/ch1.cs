@@ -8,6 +8,8 @@ public class ch1 : MonoBehaviour {
     public float dragValue,massValue;
     bool umbrellaOn = false;
     public GameObject umbrella;
+    public float speed = 1;
+    public float jumpSpeed = 1.8f;
 	// Use this for initialization
 	void Start () {
         ch = GetComponent<Rigidbody2D>();
@@ -18,12 +20,12 @@ public class ch1 : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         float moveHor = Input.GetAxis("Horizontal");
-        float moveVer = Input.GetAxis("Vertical");
-        ch.velocity = new Vector3(moveHor, ch.velocity.y);
+      // float moveVer = Input.GetAxis("Vertical");
+        ch.velocity = new Vector3(moveHor*speed, ch.velocity.y);
         ch.angularVelocity = 0;
-        if (Input.GetKeyDown(KeyCode.W)&&canJump)
+        if (Input.GetKeyDown(KeyCode.W) && canJump)
         {
-            ch.AddForce(new Vector2(0, 18), ForceMode2D.Impulse);
+            ch.AddForce(new Vector2(0, 10 * jumpSpeed), ForceMode2D.Impulse);
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -50,13 +52,14 @@ public class ch1 : MonoBehaviour {
     void OnCollisionEnter2D()
     {
         Debug.Log("!");
-        canJump = true;
+      
+          //  canJump = true;
         
     }
     void OnCollisionExit2D()
     {
         Debug.Log("?");
-        canJump = false;
+       // canJump = false;
     }
 
 }

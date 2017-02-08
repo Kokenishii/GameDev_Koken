@@ -6,6 +6,7 @@ public class windControl : MonoBehaviour {
     public GameObject umbrella;
     public AreaEffector2D windArea;
     float originalForce;
+    public float windValue = 4.5f;
 	// Use this for initialization
 	void Start () {
         originalForce = windArea.forceMagnitude;
@@ -16,7 +17,7 @@ public class windControl : MonoBehaviour {
         if (umbrella.activeSelf)
         {
             
-            windArea.forceMagnitude = originalForce*4.5f;
+            windArea.forceMagnitude = originalForce*windValue;
         }
         else
         {
