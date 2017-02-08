@@ -12,15 +12,19 @@ public class gravityChange : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (time >= 240)
+        if (time >= 300)
         {
             time = 0;
           
         }
 
         time += 1;
-        gravityArea.forceMagnitude = 0;
-        if(time>=120) gravityArea.forceMagnitude = 35;
+ 
+        gravityArea.forceMagnitude += 0.8f;
+        if (time >= 120)
+        {
+            gravityArea.forceMagnitude = 0;
+        }
 
 
     }
