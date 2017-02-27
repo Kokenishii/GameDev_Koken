@@ -23,7 +23,7 @@ public class ch1 : MonoBehaviour {
       // float moveVer = Input.GetAxis("Vertical");
         ch.velocity = new Vector3(moveHor*speed, ch.velocity.y);
         ch.angularVelocity = 0;
-        if (Input.GetKeyDown(KeyCode.Space) && canJump)
+        if (Input.GetKeyDown(KeyCode.W) && canJump)
         {
             ch.AddForce(new Vector2(0, 10 * jumpSpeed), ForceMode2D.Impulse);
         }
