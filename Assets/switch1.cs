@@ -17,7 +17,12 @@ public class switch1 : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D umbrella)
     {
         if(umbrella.name== "UmbrellaTop")
-        { gravityChange.colliderMask = 0; }
+        {
+            if (gravityChange.colliderMask != 0)
+            { gravityChange.colliderMask = 0; }
+            else
+            { gravityChange.colliderMask = 1; }
+        }
        
             }
 }
