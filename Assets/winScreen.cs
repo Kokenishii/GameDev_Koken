@@ -23,11 +23,11 @@ public class winScreen : MonoBehaviour {
     void OnTriggerEnter2D()
     {
         gameWinStatus = true;
-
+        Application.LoadLevel("Scene1");
 
     }
-    void OnTriggerExit2D()
-    {
-        Application.LoadLevel(Application.loadedLevel);
-    }
+    //void OnTriggerExit2D()
+    //{
+    //    Application.LoadLevel(Application.loadedLevel);
+    //}
 }
