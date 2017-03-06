@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class switchWind : MonoBehaviour {
     public AreaEffector2D gravityChange;
+    public ParticleSystem windParticle;
     // Use this for initialization
     void Start () {
 		
@@ -19,6 +20,7 @@ public class switchWind : MonoBehaviour {
         if (umbrella.name == "UmbrellaTop")
         {
             gravityChange.forceAngle = 180f;
+            windParticle.startSpeed = -100;
         }
 
     }

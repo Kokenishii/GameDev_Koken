@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class switch1 : MonoBehaviour {
     public AreaEffector2D gravityChange;
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public Color switchOnColor;
+
+    // Use this for initialization
+    void Start () {
+      
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -16,12 +18,17 @@ public class switch1 : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D umbrella)
     {
-        if(umbrella.name== "UmbrellaTop")
+
+        if (umbrella.name== "UmbrellaTop")
         {
             if (gravityChange.colliderMask != 0)
-            { gravityChange.colliderMask = 0; }
+            { gravityChange.colliderMask = 0;
+  
+                GetComponent<SpriteRenderer>().color = switchOnColor; }
             else
-            { gravityChange.colliderMask = 1; }
+            { gravityChange.colliderMask = 1;
+                GetComponent<SpriteRenderer>().color = new Color(255,61,57); 
+            }
         }
        
             }
