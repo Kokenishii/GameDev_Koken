@@ -10,10 +10,12 @@ public class windControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         originalForce = windArea.forceMagnitude;
+        GetComponent<SpriteRenderer>().color = new Color(0, 0, 0, 0);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        
         if (umbrella.activeSelf)
         {
             
