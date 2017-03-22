@@ -6,6 +6,7 @@ public class cameraScript : MonoBehaviour {
 
     // Use this for initialization
     public GameObject thePlayer;
+    public float positionOffsetY;
     //get the balloon(player)
     //create a text for gameOver
     //import the player object (balloon)
@@ -22,10 +23,10 @@ public class cameraScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
       
-        Vector3 moveTo = new Vector3(thePlayer.transform.position.x, thePlayer.transform.position.y, transform.position.z);
+        Vector3 moveTo = new Vector3(thePlayer.transform.position.x, thePlayer.transform.position.y+ positionOffsetY, transform.position.z);
         //Create a new Vector3 which stores the value of the target of the camera (the Player)
         // transform.position = Vector3.Lerp(transform.position, moveTo, .08f);
         transform.position = Vector3.SmoothDamp(transform.position, moveTo, ref velocity, smoothTime);
