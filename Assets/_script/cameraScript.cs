@@ -7,6 +7,7 @@ public class cameraScript : MonoBehaviour {
     // Use this for initialization
     public GameObject thePlayer;
     public float positionOffsetY;
+   
     //get the balloon(player)
     //create a text for gameOver
     //import the player object (balloon)

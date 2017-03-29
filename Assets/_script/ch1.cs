@@ -10,11 +10,18 @@ public class ch1 : MonoBehaviour {
     public GameObject umbrella;
     public float speed = 1;
     public float jumpSpeed = 1.8f;
-	// Use this for initialization
-	void Start () {
+    public Cloth dress;
+    public float dressBending;
+    public float dressStretching;
+    float dressBending0;
+    float dressStretching0;
+    // Use this for initialization
+    void Start () {
         ch = GetComponent<Rigidbody2D>();
         umbrellaOn = true;
-        ch.drag = dragValue; 
+        ch.drag = dragValue;
+        float dressBending0 = dress.bendingStiffness;
+        float dressStretching0 = dress.stretchingStiffness;
     }
 	
 	// Update is called once per frame
@@ -34,7 +41,9 @@ public class ch1 : MonoBehaviour {
                 ch.drag = dragValue;
                 //ch.mass = massValue;
                 umbrellaOn = true;
-                umbrella.SetActive(true);
+              //  umbrella.SetActive(true);
+                dress.bendingStiffness = dressBending;
+                dress.stretchingStiffness = dressStretching;
 
             }
             else
@@ -42,7 +51,10 @@ public class ch1 : MonoBehaviour {
                 ch.drag = 0;
                // ch.mass = 4;
                 umbrellaOn = false;
-               umbrella.SetActive(false);
+               //umbrella.SetActive(false);
+                dress.bendingStiffness = dressBending0;
+                //dress.stretchingStiffness = dressStretching0;
+                dress.stretchingStiffness = 0.9f;
             }
           
         }
