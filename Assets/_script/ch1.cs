@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ch1 : MonoBehaviour {
     public Rigidbody2D ch;
+ 
     bool canJump = false;
     public float dragValue,massValue;
     bool umbrellaOn = false;
@@ -15,6 +16,8 @@ public class ch1 : MonoBehaviour {
     public float dressStretching;
     float dressBending0;
     float dressStretching0;
+public float rotateBound;
+   public float rotateAdd;
     // Use this for initialization
     void Start () {
         ch = GetComponent<Rigidbody2D>();
@@ -22,6 +25,7 @@ public class ch1 : MonoBehaviour {
         ch.drag = dragValue;
         float dressBending0 = dress.bendingStiffness;
         float dressStretching0 = dress.stretchingStiffness;
+
     }
 	
 	// Update is called once per frame
@@ -29,6 +33,13 @@ public class ch1 : MonoBehaviour {
         float moveHor = Input.GetAxis("Horizontal");
       // float moveVer = Input.GetAxis("Vertical");
         ch.velocity = new Vector3(moveHor*speed, ch.velocity.y);
+        Debug.Log(ch.transform.rotation.y);
+        ch.transform.Rotate(0f, rotateAdd, 0f);
+        if (ch.transform.rotation.y >= rotateBound || ch.transform.rotation.y <= -rotateBound)
+        {
+            rotateAdd = -rotateAdd;
+        }
+ 
         ch.angularVelocity = 0;
         if (Input.GetKeyDown(KeyCode.W) && canJump)
         {
