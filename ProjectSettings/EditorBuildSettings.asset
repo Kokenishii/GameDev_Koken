@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/PrototypeScene.unity
   - enabled: 1
     path: Assets/Scene1.unity
+  - enabled: 1
+    path: Assets/MainTitle.unity
+  - enabled: 1
+    path: Assets/WhiteScene.unity

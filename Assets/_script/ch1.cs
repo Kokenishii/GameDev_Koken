@@ -14,10 +14,15 @@ public class ch1 : MonoBehaviour {
     public Cloth dress;
     public float dressBending;
     public float dressStretching;
+    public GameObject umbrellaIndicator;
     float dressBending0;
     float dressStretching0;
+  
 public float rotateBound;
    public float rotateAdd;
+    int t = 0;
+    public float turnAdd;
+    bool shouldTurn = false;
     // Use this for initialization
     void Start () {
         ch = GetComponent<Rigidbody2D>();
@@ -33,17 +38,25 @@ public float rotateBound;
         float moveHor = Input.GetAxis("Horizontal");
       // float moveVer = Input.GetAxis("Vertical");
         ch.velocity = new Vector3(moveHor*speed, ch.velocity.y);
-        Debug.Log(ch.transform.rotation.y);
+        //if (Input.GetKeyUp(KeyCode.D))
+        //{
+        //    shouldTurn = true;
+        //}
+
+        if (canJump && moveHor!=0)
+        { 
         ch.transform.Rotate(0f, rotateAdd, 0f);
         if (ch.transform.rotation.y >= rotateBound || ch.transform.rotation.y <= -rotateBound)
         {
             rotateAdd = -rotateAdd;
         }
- 
+        }
+
         ch.angularVelocity = 0;
         if (Input.GetKeyDown(KeyCode.W) && canJump)
         {
             ch.AddForce(new Vector2(0, 10 * jumpSpeed), ForceMode2D.Impulse);
+
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
@@ -52,7 +65,7 @@ public float rotateBound;
                 ch.drag = dragValue;
                 //ch.mass = massValue;
                 umbrellaOn = true;
-              //  umbrella.SetActive(true);
+              umbrellaIndicator.SetActive(true);
                 dress.bendingStiffness = dressBending;
                 dress.stretchingStiffness = dressStretching;
 
@@ -62,7 +75,7 @@ public float rotateBound;
                 ch.drag = 0;
                // ch.mass = 4;
                 umbrellaOn = false;
-               //umbrella.SetActive(false);
+                umbrellaIndicator.SetActive(false);
                 dress.bendingStiffness = dressBending0;
                 //dress.stretchingStiffness = dressStretching0;
                 dress.stretchingStiffness = 0.9f;
@@ -84,5 +97,15 @@ public float rotateBound;
         Debug.Log("?");
        canJump = false;
     }
-
+    void turnAround()
+    {
+        if (transform.rotation.y>=175)
+        {
+            shouldTurn = false; }
+        else
+        {
+            turnAdd = 1;
+        ch.transform.Rotate(0f, turnAdd, 0f);
+        }
+            }
 }
