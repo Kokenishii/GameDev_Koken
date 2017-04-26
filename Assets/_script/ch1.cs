@@ -17,7 +17,9 @@ public class ch1 : MonoBehaviour {
     public GameObject umbrellaIndicator;
     float dressBending0;
     float dressStretching0;
-  
+    public float landSpeed;
+  public Camera mainCamera;
+    float refVelocity;
 public float rotateBound;
    public float rotateAdd;
     int t = 0;
@@ -35,14 +37,36 @@ public float rotateBound;
 	
 	// Update is called once per frame
 	void Update () {
-        float moveHor = Input.GetAxis("Horizontal");
-      // float moveVer = Input.GetAxis("Vertical");
-        ch.velocity = new Vector3(moveHor*speed, ch.velocity.y);
+   
+             float moveHor = Random.Range(Input.GetAxis("Horizontal")-0.1f, Input.GetAxis("Horizontal")+0.1f);
+        if (!Input.GetKey(KeyCode.A)&&!Input.GetKey(KeyCode.D))
+        {
+            moveHor = 0;
+        }
+            // float moveVer = Input.GetAxis("Vertical");
+
+            ch.velocity = new Vector3(moveHor*speed, ch.velocity.y);
         //if (Input.GetKeyUp(KeyCode.D))
         //{
         //    shouldTurn = true;
         //}
-
+        Camera thisCamera = mainCamera.GetComponent<Camera>();
+        thisCamera.fieldOfView = Mathf.SmoothDamp(thisCamera.fieldOfView, 32 + ch.velocity.y * 0.5f, ref refVelocity, 1f);
+        //if(!canJump)
+        //{
+        //    Camera thisCamera = mainCamera.GetComponent<Camera>();
+        //    if (ch.velocity.y > 0)
+        //    {
+        //        thisCamera.fieldOfView += 0.1f;
+        //    }
+        //    else
+        //    {
+        //        if (ch.velocity.y < 0)
+        //        {
+        //            thisCamera.fieldOfView -= 0.5f;
+        //        }
+        //    }
+        //}
         if (canJump && moveHor!=0)
         { 
         ch.transform.Rotate(0f, rotateAdd, 0f);
@@ -90,12 +114,14 @@ public float rotateBound;
         Debug.Log("!");
       
            canJump = true;
-        
+        ch.velocity = new Vector3(ch.velocity.x, ch.velocity.y - landSpeed);
+      
     }
     void OnCollisionExit2D()
     {
         Debug.Log("?");
        canJump = false;
+      
     }
     void turnAround()
     {
