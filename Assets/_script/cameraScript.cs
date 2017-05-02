@@ -16,7 +16,7 @@ public class cameraScript : MonoBehaviour {
 
     private Vector3 velocity = Vector3.zero;
     //the smoothdamp function requires a ref velocity to handle
-    public float smoothTime = 0.7f;
+    public float smoothTime = 0.5f;
     //I want to control the time in which the camera SMOOTHLY moves to the target (balloon)
     void Start()
     {

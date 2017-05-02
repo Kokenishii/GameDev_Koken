@@ -28,7 +28,7 @@ public float rotateBound;
     // Use this for initialization
     void Start () {
         ch = GetComponent<Rigidbody2D>();
-        umbrellaOn = true;
+        umbrellaOn = false;
         ch.drag = dragValue;
         float dressBending0 = dress.bendingStiffness;
         float dressStretching0 = dress.stretchingStiffness;
@@ -51,7 +51,7 @@ public float rotateBound;
         //    shouldTurn = true;
         //}
         Camera thisCamera = mainCamera.GetComponent<Camera>();
-        thisCamera.fieldOfView = Mathf.SmoothDamp(thisCamera.fieldOfView, 32 + ch.velocity.y * 0.5f, ref refVelocity, 1f);
+        thisCamera.fieldOfView = Mathf.SmoothDamp(thisCamera.fieldOfView, 50 + ch.velocity.y * 0.5f, ref refVelocity, 1f);
         //if(!canJump)
         //{
         //    Camera thisCamera = mainCamera.GetComponent<Camera>();
@@ -111,7 +111,7 @@ public float rotateBound;
     }
     void OnCollisionEnter2D()
     {
-        Debug.Log("!");
+       // Debug.Log("!");
       
            canJump = true;
         ch.velocity = new Vector3(ch.velocity.x, ch.velocity.y - landSpeed);
@@ -119,7 +119,7 @@ public float rotateBound;
     }
     void OnCollisionExit2D()
     {
-        Debug.Log("?");
+      //  Debug.Log("?");
        canJump = false;
       
     }

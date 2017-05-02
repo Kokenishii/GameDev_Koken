@@ -20,7 +20,7 @@ public class gravityChange : MonoBehaviour {
 
         time += 1;
  
-        gravityArea.forceMagnitude += 0.8f;
+        gravityArea.forceMagnitude += 4f;
         if (time >= 120)
         {
             gravityArea.forceMagnitude = 0;

@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class winScreen : MonoBehaviour {
-    public Text gameWin;
+public class finalScript : MonoBehaviour {
+
     bool gameWinStatus = false;
     // Use this for initialization
     void Start()
@@ -17,17 +16,13 @@ public class winScreen : MonoBehaviour {
     {
         if (gameWinStatus)
         {
-           // gameWin.gameObject.SetActive(true);
+            // gameWin.gameObject.SetActive(true);
         }
     }
     void OnTriggerEnter2D()
     {
         gameWinStatus = true;
-        Application.LoadLevel("mainTitle");
+        Application.LoadLevel("Final");
 
     }
-    //void OnTriggerExit2D()
-    //{
-    //    Application.LoadLevel(Application.loadedLevel);
-    //}
 }

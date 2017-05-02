@@ -20,6 +20,6 @@ public class MainWhiteScene : MonoBehaviour {
     }
     public void EnterWhiteScene()
     {
-        SceneManager.LoadScene("WhiteScene");
+        SceneManager.LoadScene("whiteScene2");
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class triggerControl : MonoBehaviour {
     // Use this for initialization
-    float i = 0;
+
 	void Start () {
     
     }
